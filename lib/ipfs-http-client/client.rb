@@ -44,5 +44,9 @@ module Ipfs
     def pin_rm(node, recursive: true)
       Commands::PinRm.call self, node, recursive: recursive
     end
+
+    def pin_add(node, recursive: true)
+      Commands::PinAdd.call self, node, recursive: recursive
+    end
   end
 end

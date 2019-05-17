@@ -75,6 +75,12 @@ pry(main)> client.pin_rm "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"
 => {"Pins"=>["Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"]}
 ```
 
+### pin add
+```
+pry(main)> client.pin_add "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"
+=> {"Pins"=>["Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"]}
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
