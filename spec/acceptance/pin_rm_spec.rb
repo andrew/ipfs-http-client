@@ -11,27 +11,25 @@ describe 'pin rm command' do
     it 'Without recursive' do
       ipfs.pin_rm node
 
-      expect(WebMock).to have_requested :get, "#{api_url}/pin/rm?arg=#{node}&recursive=true"
+      expect(WebMock).to have_requested :get, "#{base_url}/pin/rm?arg=#{node}&recursive=true"
     end
 
     it 'With positive recursive' do
       ipfs.pin_rm node, recursive: true
 
-      expect(WebMock).to have_requested :get, "#{api_url}/pin/rm?arg=#{node}&recursive=true"
+      expect(WebMock).to have_requested :get, "#{base_url}/pin/rm?arg=#{node}&recursive=true"
     end
 
     it 'With negative recursive' do
       ipfs.pin_rm node, recursive: false
 
-      expect(WebMock).to have_requested :get, "#{api_url}/pin/rm?arg=#{node}&recursive=false"
+      expect(WebMock).to have_requested :get, "#{base_url}/pin/rm?arg=#{node}&recursive=false"
     end
   end
 
   it 'Main case' do
     result = ipfs.pin_rm node
 
-    expect(result).to be_a HTTP::Response
-    expect(result.code).to eq 200
-    expect(JSON.parse result.to_s).to eq response_hash
+    expect(result).to eq response_hash
   end
 end

@@ -1,10 +1,11 @@
-require 'spec_helper'
-require 'ipfs/commands/cat'
+# frozen_string_literal: true
 
-module IPFS::Commands
+require 'spec_helper'
+
+module Ipfs::Commands
   describe Cat do
     describe '.call' do
-      let(:client) { double api_url: 'api-url' }
+      let(:client) { double base_url: 'api-url' }
       let(:response) { double to_s: 'response' }
       let(:node) { 'abc' }
 
@@ -16,7 +17,7 @@ module IPFS::Commands
         Cat.call client, node
 
         expect(HTTP).to have_received(:get).with(
-          "api-url/cat?arg=abc&stream-channels=true"
+          "api-url/cat?arg=abc"
         )
       end
 

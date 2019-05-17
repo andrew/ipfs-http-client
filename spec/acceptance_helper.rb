@@ -1,27 +1,24 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'webmock/rspec'
 require 'mock_api'
-require 'ipfs/client'
 
 RSpec.configure do |config|
   config.before :each do
     WebMock.disable_net_connect!
-    stub_request(:any, /#{Regexp.escape(api_url)}/).to_rack MockAPI
+    stub_request(:any, /#{Regexp.escape(base_url)}/).to_rack MockAPI
   end
 end
 
 def ipfs_client
-  IPFS::Client.new host: default_host, port: default_port
+  Ipfs::Client.new default_endpoint
 end
 
-def default_host
-  'http://myhost.com'
+def default_endpoint
+  'http://myhost.com:6035'
 end
 
-def default_port
-  6035
-end
-
-def api_url
-  "#{default_host}:#{default_port}/api/v0"
+def base_url
+  "#{default_endpoint}/api/v0"
 end

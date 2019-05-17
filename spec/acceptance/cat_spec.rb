@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'acceptance_helper'
 
 describe 'cat command' do
@@ -9,7 +11,7 @@ describe 'cat command' do
     ipfs.cat node
 
     expect(WebMock).to have_requested(
-      :get, "#{api_url}/cat?arg=#{node}&stream-channels=true"
+      :get, "#{base_url}/cat?arg=#{node}"
     )
   end
 

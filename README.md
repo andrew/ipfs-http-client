@@ -1,8 +1,8 @@
-# IPFS API Bindings for Ruby
+# IPFS HTTP Client for Ruby
 
 ![](https://ipfs.io/ipfs/QmQJ68PFMDdAsgCZvA1UVzzn18asVcf7HVvCDgpjiSCAse)
 
-> This gem provides IPFS API bindings for Ruby, see [https://ipfs.io](https://ipfs.io).
+> This gem provides IPFS HTTP client for Ruby, see [https://ipfs.io](https://ipfs.io).
 
 **Work in progress.**
 
@@ -26,55 +26,53 @@ Or install it yourself as:
 ## Usage
 ### Initialize client
 
-```ruby
-require 'ipfs/client'
-client = IPFS::Client.new host: 'yourhost', port: 5001
+```
+pry(main)> client = Ipfs::Client.new 'http://localhost:5001'
+=> #<Ipfs::Client:0x00007fb6ec459610 @endpoint="http://localhost:5001">
+
 ```
 
-or:
+### add
+#### Add a file
 
-```ruby
-require 'ipfs/client'
-client = IPFS::Client.default # => uses localhost and port 5001
+```
+pry(main)> client.add "a.txt"
+{"Name"=>"a.txt", "Hash"=>"Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9", "Size"=>"10"}
+```
+
+#### Add a directory
+```
+pry(main)> client.add_dir "~/ipfs"
+=> [{"Name"=>"ipfs/sub/txt.txt", "Hash"=>"QmVpJWKCh3QbJYGWyPXXBY4t95B89uEMNT7VUoD2JtkpH9", "Size"=>"12"},
+ {"Name"=>"ipfs/xx.txt", "Hash"=>"QmUFgREzM1tEKTvUHdo5hTQhxn9j1qHM1ZwR4u8e8Srgji", "Size"=>"13"},
+ {"Name"=>"ipfs/sub", "Hash"=>"QmdcJi9C6Gy2yCXGhevEmuAn4o4c57PsL8Va3b22TXpBRV", "Size"=>"65"},
+ {"Name"=>"ipfs", "Hash"=>"QmVwpFxhz1HJ96DbrXhgFBxPj4RkGT5snw6pACXkVwPbSw", "Size"=>"175"}]
 ```
 
 ### ls
 
-```ruby
-nodes = client.ls 'QmXqJAkSdP8e7TSXEeSRKoDY27G11ZwaFJGiKuNFWxpUZo'
-
-nodes.each do |node|
-  # node is an instance of IPFS::Content::Node
-
-  puts node.hashcode
-
-  node.links.each do |link|
-    # link is an instance of IPFS::Content::Link
-
-    puts link.name
-    puts link.hashcode
-    puts link.size
-  end
-end
 ```
-
-### add
-```ruby
-link = client.add 'myExampleFile.txt'
-puts link.hashcode
-# => QmaVwjMgqjBD25apiuVVnaDqU8SsiiREAAy3Amb1Bs2XHs
+pry(main)> client.ls "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"
+=> {"Objects"=>[{"Hash"=>"Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9", "Links"=>[]}]
 ```
 
 ### cat
-```ruby
-client.cat 'QmaVwjMgqjBD25apiuVVnaDqU8SsiiREAAy3Amb1Bs2XHs'
-# => "This is some example content."
+#### Cat a file
+```
+pry(main)> client.cat "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"
+=> "The file content.\n"
+```
+
+#### Cat a file and write to disk
+```
+pry(main)> client.cat_to_file "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9", "~/ipfs/a.txt"
+=> true
 ```
 
 ### pin rm
-```ruby
-client.pin_rm 'QmaVwjMgqjBD25apiuVVnaDqU8SsiiREAAy3Amb1Bs2XHs', recursive: true
-# => HTTP::Response
+```
+pry(main)> client.pin_rm "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"
+=> {"Pins"=>["Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"]}
 ```
 
 ## Development

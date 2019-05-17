@@ -1,7 +1,8 @@
-require 'spec_helper'
-require 'ipfs/client'
+# frozen_string_literal: true
 
-module IPFS
+require 'spec_helper'
+
+module Ipfs
   describe Client do
     let(:client) { Client.default }
 
@@ -9,24 +10,22 @@ module IPFS
       it 'creates client with default host and port' do
         client = Client.default
 
-        expect(client.host).to eq Client::DEFAULT_HOST
-        expect(client.port).to eq Client::DEFAULT_PORT
+        expect(client.endpoint).to eq Client::DEFAULT_ENDPOINT
       end
     end
 
     describe '#initialize' do
       it 'allows to set the host and port' do
-        client = Client.new host: 'myhost', port: 3001
+        client = Client.new 'myhost:3001'
 
-        expect(client.host).to eq 'myhost'
-        expect(client.port).to eq 3001
+        expect(client.endpoint).to eq 'myhost:3001'
       end
     end
 
-    describe '#api_url' do
+    describe '#base_url' do
       it 'is built out of host, port and prefix' do
-        client = Client.new host: 'myhost', port: 8077
-        expect(client.api_url).to eq(
+        client = Client.new 'myhost:8077'
+        expect(client.base_url).to eq(
           "myhost:8077/api/#{Client::API_VERSION}"
         )
       end
@@ -34,12 +33,12 @@ module IPFS
 
     describe '#ls' do
       it 'delegates to LS class' do
-        allow(Commands::LS).to receive(:call)
+        allow(Commands::Ls).to receive(:call)
         node = 'abc'
 
         client.ls node
 
-        expect(Commands::LS).to have_received(:call).with client, node
+        expect(Commands::Ls).to have_received(:call).with client, node
       end
     end
 
