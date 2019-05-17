@@ -27,7 +27,7 @@ module Ipfs
           end
         end
 
-        response = http_get(client, "/add?recursive=true",
+        response = request(client, "/add?recursive=true",
                  {form: {file: form_files }})
 
         response.body.to_s.split("\n").map { |s| JSON.parse s }
