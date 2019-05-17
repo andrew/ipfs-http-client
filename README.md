@@ -12,7 +12,7 @@ Requires Ruby >= 2.1, since it uses the new required keyword arguments syntax.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ipfs'
+gem 'ipfs-http-client'
 ```
 
 And then execute:
@@ -21,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ipfs
+    $ gem install ipfs-http-client
 
 ## Usage
 ### Initialize client
