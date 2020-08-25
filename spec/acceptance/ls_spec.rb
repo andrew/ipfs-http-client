@@ -16,7 +16,6 @@ describe 'ls command' do
 
   it 'parses the result' do
     result = ipfs.ls node
-    puts result
 
     expect(result['Objects'].map { |node| node['Hash'] }).to eq ['Hash1', 'Hash2']
     expect(result['Objects'].first['Links'].first['Name']).to eq 'Link'
