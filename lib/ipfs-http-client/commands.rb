@@ -1,5 +1,6 @@
 require 'ipfs-http-client/commands/base'
 require 'ipfs-http-client/commands/ls'
+require 'ipfs-http-client/commands/id'
 require 'ipfs-http-client/commands/cat'
 require 'ipfs-http-client/commands/cat_to_file'
 require 'ipfs-http-client/commands/add'

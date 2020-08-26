@@ -25,6 +25,10 @@ module Ipfs
       Commands::Ls.call self, node
     end
 
+    def id
+      Commands::Id.call self
+    end
+
     def cat(node)
       Commands::Cat.call self, node
     end
