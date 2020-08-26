@@ -52,5 +52,9 @@ module Ipfs
     def pin_add(node, recursive: true)
       Commands::PinAdd.call self, node, recursive: recursive
     end
+
+    def swarm_connect(address)
+      Commands::SwarmConnect.call self, address
+    end
   end
 end
