@@ -3,8 +3,10 @@
 module Ipfs
   module Commands
     class Id < Ipfs::Commands::Base
-      def self.call(client)
-        response = request(client, "/id")
+      def self.call(client, peer_id = nil)
+        path = '/id'
+        path = path + "?arg=#{peer_id}" if peer_id
+        response = request(client, path)
         parse(response.body)
       end
     end

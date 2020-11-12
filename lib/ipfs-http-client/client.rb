@@ -25,8 +25,8 @@ module Ipfs
       Commands::Ls.call self, node
     end
 
-    def id
-      Commands::Id.call self
+    def id(peer_id = nil)
+      Commands::Id.call self, peer_id
     end
 
     def cat(node)
