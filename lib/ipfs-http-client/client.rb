@@ -56,5 +56,9 @@ module Ipfs
     def swarm_connect(address)
       Commands::SwarmConnect.call self, address
     end
+
+    def swarm_peers
+      Commands::SwarmPeers.call self
+    end
   end
 end
