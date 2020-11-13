@@ -12,16 +12,12 @@ Requires Ruby >= 2.1, since it uses the new required keyword arguments syntax.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ipfs-http-client'
+gem 'ipfs-http-client', github: 'andrew/ipfs-http-client'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install ipfs-http-client
 
 ## Usage
 ### Initialize client
@@ -89,4 +85,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/Fryie/ipfs-ruby).
+Bug reports and pull requests are welcome on [GitHub](https://github.com/andrew/ipfs-http-client).
