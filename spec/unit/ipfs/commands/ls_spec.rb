@@ -6,17 +6,17 @@ module Ipfs::Commands
   describe Ls do
     describe '.call' do
       let(:client) { double base_url: 'api-url' }
-      let(:response) { double body: '{ "Objects": [1, 2] }' }
+      let(:response) { double body: '{ "Objects": [1, 2] }', code: 200 }
       let(:node) { 'abc' }
 
       before :each do
-        allow(HTTP).to receive(:get) { response }
+        allow(HTTP).to receive(:post) { response }
       end
 
       it 'issues the correct request' do
         Ls.call client, node
 
-        expect(HTTP).to have_received(:get).with(
+        expect(HTTP).to have_received(:post).with(
           "api-url/ls?arg=abc"
         )
       end

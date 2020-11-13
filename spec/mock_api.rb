@@ -4,7 +4,7 @@ require 'sinatra/base'
 require 'json'
 
 class MockAPI < Sinatra::Base
-  get '/api/v0/ls' do
+  post '/api/v0/ls' do
     content_type :json
 
     {
@@ -25,11 +25,11 @@ class MockAPI < Sinatra::Base
     }.to_json
   end
 
-  get '/api/v0/cat' do
+  post '/api/v0/cat' do
     'This is just some text.'
   end
 
-  get '/api/v0/add' do
+  post '/api/v0/add' do
     content_type :json
 
     {
@@ -39,7 +39,7 @@ class MockAPI < Sinatra::Base
     }.to_json
   end
 
-  get '/api/v0/pin/rm' do
+  post '/api/v0/pin/rm' do
     content_type :json
 
     { 'Pins' => ['QmPokKskGJwH5XPX3jzEmKX365HnzED3n7x56v2jaNX5Lf'] }.to_json

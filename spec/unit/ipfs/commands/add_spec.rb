@@ -6,17 +6,17 @@ module Ipfs::Commands
   describe Add do
     describe '.call' do
       let(:client) { double base_url: 'api-url' }
-      let(:response) { double body: '{ "Name": "myfilename.txt", "Hash": "myhash" }' }
+      let(:response) { double body: '{ "Name": "myfilename.txt", "Hash": "myhash" }', code: 200 }
 
       before :each do
-        allow(HTTP).to receive(:get) { response }
+        allow(HTTP).to receive(:post) { response }
         allow(File).to receive(:open).with('myfilename.txt', {:binmode=>true})
       end
 
       it 'issues the correct request' do
         Add.call(client, 'myfilename.txt')
 
-        expect(HTTP).to have_received(:get).with(
+        expect(HTTP).to have_received(:post).with(
           'api-url/add', include(:form)
         )
       end

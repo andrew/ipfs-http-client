@@ -18,7 +18,7 @@ describe 'add command' do
   it 'issues the right API request' do
     ipfs.add 'myfilename.txt'
     expect(WebMock).to have_requested(
-      :get, "#{base_url}/add"
+      :post, "#{base_url}/add"
     )
   end
 

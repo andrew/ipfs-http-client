@@ -10,7 +10,7 @@ describe 'ls command' do
     ipfs.ls node
 
     expect(WebMock).to have_requested(
-      :get, "#{base_url}/ls?arg=#{node}"
+      :post, "#{base_url}/ls?arg=#{node}"
     )
   end
 

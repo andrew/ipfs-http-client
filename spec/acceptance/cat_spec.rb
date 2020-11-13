@@ -11,7 +11,7 @@ describe 'cat command' do
     ipfs.cat node
 
     expect(WebMock).to have_requested(
-      :get, "#{base_url}/cat?arg=#{node}"
+      :post, "#{base_url}/cat?arg=#{node}"
     )
   end
 
