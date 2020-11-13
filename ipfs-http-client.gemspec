@@ -12,12 +12,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'IPFS HTTP client'
   spec.description   = 'Ruby HTTP client for the Interplanetary File System'
-  spec.homepage      = 'https://gitlab.com/persper/gitlab/ipfs-http-client'
+  spec.homepage      = 'https://github.com/andrew/ipfs-http-client'
 
   spec.files         = Dir['README.md', 'lib/**/*']
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.1'
+  spec.required_ruby_version = '>= 2.7'
 
   spec.add_dependency 'http', '~> 4.4'
 
