@@ -77,6 +77,12 @@ pry(main)> client.pin_add "Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"
 => {"Pins"=>["Qmbvkmk9LFsGneteXk3G7YLqtLVME566ho6ibaQZZVHaC9"]}
 ```
 
+### log level
+```
+pry(main)> client.log_level 'engine', 'debug'
+=> {"Message"=>"Changed log level of 'engine' to 'debug'\n"}
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

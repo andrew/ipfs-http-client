@@ -45,6 +45,10 @@ module Ipfs
       Commands::AddDir.call self, dir
     end
 
+    def log_level(subsystem, level)
+      Commands::LogLevel.call self, subsystem, level
+    end
+
     def pin_rm(node, recursive: true)
       Commands::PinRm.call self, node, recursive: recursive
     end
