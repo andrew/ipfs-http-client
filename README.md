@@ -83,6 +83,12 @@ pry(main)> client.log_level 'engine', 'debug'
 => {"Message"=>"Changed log level of 'engine' to 'debug'\n"}
 ```
 
+### repo gc
+```
+pry(main)> client.repo_gc
+=> '{"Key":{"/":"QmfMd9nhs7CUFkhNqVzBG972T8B4mQrEjJFQ9PkV49NQDZ"}}'
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

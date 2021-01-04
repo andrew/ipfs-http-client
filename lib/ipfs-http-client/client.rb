@@ -4,7 +4,7 @@ require 'ipfs-http-client/commands'
 
 module Ipfs
   class Client
-    DEFAULT_ENDPOINT = 'http://localhost:5000'.freeze
+    DEFAULT_ENDPOINT = 'http://localhost:5001'.freeze
     API_VERSION = 'v0'.freeze
 
     attr_reader :endpoint
@@ -55,6 +55,10 @@ module Ipfs
 
     def pin_add(node, recursive: true)
       Commands::PinAdd.call self, node, recursive: recursive
+    end
+
+    def repo_gc
+      Commands::RepoGc.call self
     end
 
     def swarm_connect(address)
