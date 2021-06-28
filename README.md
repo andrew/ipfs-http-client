@@ -89,6 +89,12 @@ pry(main)> client.repo_gc
 => '{"Key":{"/":"QmfMd9nhs7CUFkhNqVzBG972T8B4mQrEjJFQ9PkV49NQDZ"}}'
 ```
 
+### urlstore add
+```
+pry(main)> client.urlstore_add 'http://myurl.com/cat.jpg'
+=> {"Key"=>"bafkreifbf72t34od5u7vipyn3xfassxqrq7uqljd72y3m3trnrvmaozogq", "Size"=>862}
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

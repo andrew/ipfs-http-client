@@ -68,5 +68,9 @@ module Ipfs
     def swarm_peers
       Commands::SwarmPeers.call self
     end
+
+    def urlstore_add(url)
+      Commands::UrlstoreAdd.call self, url
+    end
   end
 end
