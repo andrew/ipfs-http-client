@@ -11,7 +11,7 @@ module Ipfs
     class Base
       def self.request(client, path_with_query, args = nil)
         url = "#{client.base_url}#{path_with_query}"
-        response = HTTP.post(*[url, args].compact)
+        response = HTTP.timeout(60).post(*[url, args].compact)
         if response.code >= 200 && response.code <= 299
           response
         else
